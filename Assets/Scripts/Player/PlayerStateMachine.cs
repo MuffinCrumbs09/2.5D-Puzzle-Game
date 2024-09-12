@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -10,7 +9,7 @@ public class PlayerStateMachine : StateMachine
     #endregion
 
     #region Components
-    [field: SerializeField] public CharacterController _cc { get; private set; }
+    [field: SerializeField] public Rigidbody _rb { get; private set; }
     [field: SerializeField] public Camera _cam { get; private set; }
     #endregion
 

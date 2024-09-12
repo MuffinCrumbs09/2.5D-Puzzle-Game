@@ -9,18 +9,17 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Entered Idle");
+        //_stateMachine._rb.isKinematic = true;
     }
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("Idle");
         if(_stateMachine._ir.MovementValue.magnitude >= 0.1f)
             _stateMachine.SwitchState(new PlayerWalkState(_stateMachine));
     }
 
     public override void Exit()
     {
-        Debug.Log("Exited Idle");
+        //_stateMachine._rb.isKinematic = false;
     }
 }

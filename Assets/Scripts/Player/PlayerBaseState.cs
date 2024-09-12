@@ -14,7 +14,7 @@ public abstract class PlayerBaseState : State
 
     protected void Move(Vector3 motion, float deltaTime)
     {
-        _stateMachine._cc.Move(motion * deltaTime);
+        _stateMachine._rb.AddForce(motion * deltaTime, ForceMode.Force);
     }
 
     protected Vector3 CalculateMovement()
