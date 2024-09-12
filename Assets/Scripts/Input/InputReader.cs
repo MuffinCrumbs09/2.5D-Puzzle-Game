@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,7 +15,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     #endregion
 
     #region Events
-
+    public event Action JumpEvent;
     #endregion
 
     private void Start()
@@ -53,5 +54,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnSprint(InputAction.CallbackContext context)
     {
         isSprint = context.performed;
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            JumpEvent?.Invoke();
     }
 }
