@@ -6,6 +6,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
     #region Public Variables
     public Vector2 MovementValue {  get; private set; }
+    public bool isSprint {  get; private set; }
     #endregion
 
     #region Private Variables
@@ -18,20 +19,24 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     private void Start()
     {
+        // Lock cursor to game window and hide it
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Create control scheme and set the callback to this script
         _controls = new Controls();
         _controls.Player.SetCallbacks(this);
 
         _controls.Player.Enable();
     }
-
+    
+    // If the gameobject gets destroyed, disable input
     private void OnDestroy()
     {
         _controls.Player.Disable();
     }
 
+    // Toggle input on or off
     public void ToggleControls(bool toggle)
     {
         if (toggle)
@@ -43,5 +48,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnMovement(InputAction.CallbackContext context)
     {
         MovementValue = context.ReadValue<Vector2>();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        isSprint = context.performed;
     }
 }

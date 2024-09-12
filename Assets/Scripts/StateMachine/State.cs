@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Abstract class
 public abstract class State
 {
     public abstract void Enter();
